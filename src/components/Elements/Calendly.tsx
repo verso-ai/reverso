@@ -22,7 +22,7 @@ export const Calendly: FC<Props> = ({
   //   placeholder,
   //   required,
 }) => {
-  const [checked, setChecked] = useState<string[]>([]);
+  const [checked] = useState<string[]>([]);
   const { setSubmission }: any = useContext(SubmissionContext);
   const pageName = useContext(PageContext);
 
@@ -34,9 +34,7 @@ export const Calendly: FC<Props> = ({
     onProfilePageViewed: () => console.log('onProfilePageViewed'),
     onDateAndTimeSelected: () => console.log('onDateAndTimeSelected'),
     onEventTypeViewed: () => console.log('onEventTypeViewed'),
-    onEventScheduled: e => {
-      console.log(e.data.payload), setChecked(['aaaa']);
-    },
+    onEventScheduled: e => console.log(e.data.payload),
   });
 
   return (
