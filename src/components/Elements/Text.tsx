@@ -4,6 +4,7 @@ import { classNamesConcat } from '../../lib/utils';
 import { ClassNames } from '../../types';
 import { SubmissionContext } from '../ReversoForm/ReversoForm';
 import { PageContext } from '../ReversoPage/ReversoPage';
+import { ReversoInput } from './Input';
 
 interface Props {
   name: string;
@@ -25,40 +26,22 @@ export const Text: FC<Props> = ({
   const { setSubmission } = useContext(SubmissionContext);
   const pageName = useContext(PageContext);
   return (
-    <div>
-      {label && (
-        <label
-          htmlFor={name}
-          className={
-            classNames.label || 'block text-sm font-medium text-red-500'
-          }
-        >
-          {label}
-        </label>
+    <ReversoInput
+      type="text"
+      name={name}
+      id={`input-${name}`}
+      className={classNamesConcat(
+        Icon ? 'pl-10' : '',
+        classNames.element ||
+          'block w-full border-gray-300 rounded-md focus:ring-slate-500 focus:border-slate-500 sm:text-sm'
       )}
-      <div className={'relative mt-1 rounded-md shadow-sm'}>
-        {Icon && (
-          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            <div className="w-5 h-5 text-gray-400 ">{Icon}</div>
-          </div>
-        )}
-
-        <input
-          type="text"
-          name={name}
-          id={`input-${name}`}
-          className={classNamesConcat(
-            Icon ? 'pl-10' : '',
-            classNames.element ||
-              'block w-full border-gray-300 rounded-md focus:ring-slate-500 focus:border-slate-500 sm:text-sm'
-          )}
-          placeholder={placeholder}
-          onChange={e =>
-            setSubmissionValue(e.target.value, pageName, name, setSubmission)
-          }
-          required={required}
-        />
-      </div>
-    </div>
+      placeholder={placeholder}
+      onChange={e =>
+        setSubmissionValue(e.target.value, pageName, name, setSubmission)
+      }
+      required={required}
+      icon={Icon}
+      label={label}
+    />
   );
 };

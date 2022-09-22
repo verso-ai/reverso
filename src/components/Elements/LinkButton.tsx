@@ -18,13 +18,10 @@ export const LinkButton: FC<Props> = ({
   // const { setSubmission } = useContext(SubmissionContext);
   // const pageName = useContext(PageContext);
   return (
-    <main className="flex w-full bg-red-100 h-full max-w-sm mx-auto justify-center">
+    <main className="flex w-full h-full max-w-sm mx-auto justify-center">
       <a
         href={placeholder || ''}
-        className="relative w-full items-center px-4 py-2 border
-       border-transparent shadow-sm text-sm font-medium rounded-sm text-white
-        bg-black hover:bg-pink-dark focus:outline-none focus:ring-2 focus:ring-offset-2
-         focus:ring-offset-gray-800 focus:ring-indigo-500"
+        className="w-full mt-7 uppercase items-center px-4 py-3 text-lg font-regular tracking-wider	 text-white bg-blue shadow-lg shadow-indigo-500/50 border border-transparent rounded-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
       >
         {label && (
           <div className={'block text-md font-medium text-center text-white'}>

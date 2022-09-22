@@ -1,7 +1,7 @@
 //import 'react-app-polyfill/ie11';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { ReversoForm, ReversoPage, ReversoElement } from '@reverso/react';
+import { ReversoForm, ReversoPage, ReversoElement } from 'codingpancakes-lok';
 import '../dist/styles.css';
 
 const App = () => {
@@ -25,6 +25,13 @@ const App = () => {
             label="What programming languages do you love?"
             options={['C++', 'Javascript', 'Scala', 'Assembler']}
           />
+
+          <ReversoElement
+            type="payment"
+            name="programming-lanuguages"
+            label="What programming languages do you love?"
+            options={['C++', 'Javascript', 'Scala', 'Assembler']}
+          />
           <ReversoElement
             type="radio"
             name="favourite-food"
@@ -33,6 +40,7 @@ const App = () => {
           />
           <ReversoElement name="submit" type="submit" label="Submit" />
         </ReversoPage>
+
         <ReversoPage name="thankyou" thankyou>
           <p>Thanks a lot for your time and insights 🙏</p>
         </ReversoPage>

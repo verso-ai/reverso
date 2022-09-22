@@ -9,14 +9,16 @@ interface Props {
 
 export const Submit: FC<Props> = ({ classNames, label }) => {
   return (
-    <button
-      type="submit"
-      className={classNamesConcat(
-        classNames?.button ||
-          'inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-white border border-transparent rounded-md shadow-sm bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500'
-      )}
-    >
-      {label || 'Submit'}
-    </button>
+    <div className="sm:mx-auto max-w-sm ">
+      <button
+        type="submit"
+        className={classNamesConcat(
+          classNames?.button ||
+            'w-full mt-7 uppercase items-center px-4 py-3 text-lg font-regular tracking-wider	 text-white bg-blue shadow-lg shadow-indigo-500/50 border border-transparent rounded-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500'
+        )}
+      >
+        {label || 'Submit'}
+      </button>
+    </div>
   );
 };

@@ -1,6 +1,6 @@
 {
-  "version": "0.1.4",
-  "name": "@reverso/react",
+  "version": "0.1.9",
+  "name": "codingpancakes-lok",
   "author": "reversoForms <hola@reverso.com>",
   "description": "React library",
   "homepage": "https://verso.ai",
@@ -74,6 +74,7 @@
     "autoprefixer": "^10.4.7",
     "babel-loader": "^8.2.5",
     "cross-env": "^7.0.3",
+    "deepmerge": "^4.2.2",
     "husky": "^8.0.1",
     "postcss": "^8.4.14",
     "react": "^18.2.0",
@@ -88,6 +89,22 @@
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^3.3.3",
     "@headlessui/react": "^1.6.6",
-    "react-calendly": "^4.0.1"
+    "@heroicons/react": "^2.0.11",
+    "dayjs": "^1.11.5",
+    "dayjs-business-days2": "^1.1.1",
+    "instead": "^1.0.3",
+    "react-calendly": "^4.0.1",
+    "tailwind-merge": "^1.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/verso-ai/reverso.git"
+  },
+  "bugs": {
+    "url": "https://github.com/verso-ai/reverso/issues"
+  },
+  "directories": {
+    "example": "example",
+    "test": "test"
   }
 }

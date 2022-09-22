@@ -8,7 +8,7 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "@reverso/react": "file:..",
+    "codingpancakes-lok": "file:..",
     "react-app-polyfill": "^1.0.0"
   },
   "alias": {

@@ -23,10 +23,22 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
+"@fingerprintjs/fingerprintjs@^3.3.3":
+  version "3.3.5"
+  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs/-/fingerprintjs-3.3.5.tgz#6fe23579b2d67e14458c743a6d1181b96c74b857"
+  integrity sha512-G5jEDVc5LQB9Pi1JLGpwYHvcVLWTnQExeqY3XmA8wJjtJy6uZOdv6cBYmHxbLFP+rh2TbVAuhLhJ4FlfNM9g+Q==
+  dependencies:
+    tslib "^2.0.1"
+
 "@headlessui/react@^1.6.6":
   version "1.6.6"
   resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-1.6.6.tgz#3073c066b85535c9d28783da0a4d9288b5354d0c"
   integrity sha512-MFJtmj9Xh/hhBMhLccGbBoSk+sk61BlP6sJe4uQcVMtXZhCgGqd2GyIQzzmsdPdTEWGSF434CBi8mnhR6um46Q==
+
+"@heroicons/react@^2.0.11":
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/@heroicons/react/-/react-2.0.11.tgz#2c6cf4c66d81142ec87c102502407d8c353558bb"
+  integrity sha512-bASjOgSSaYj8HqXWsOqaBiB6ZLalE/g90WYGgZ5lPm4KCCG7wPXntY4kzHf5NrLh6UBAcnPwvbiw1Ne9GYfJtw==
 
 "@jridgewell/gen-mapping@^0.3.0":
   version "0.3.2"
@@ -763,11 +775,6 @@
     chrome-trace-event "^1.0.2"
     nullthrows "^1.1.1"
 
-"@reverso/react@file:..":
-  version "0.1.0"
-  dependencies:
-    "@headlessui/react" "^1.6.6"
-
 "@swc/helpers@^0.4.2":
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/@swc/helpers/-/helpers-0.4.3.tgz#16593dfc248c53b699d4b5026040f88ddb497012"
@@ -904,6 +911,18 @@ clone@^2.1.1:
   resolved "https://registry.npmjs.org/clone/-/clone-2.1.2.tgz"
   integrity sha512-3Pe/CF1Nn94hyhIYpjtiLhdCoEoz0DqQ+988E9gmeEdQZlojxnOb74wctFyuwWQHzqyf9X7C7MG8juUpqBJT8w==
 
+"codingpancakes-lok@file:..":
+  version "0.1.8"
+  dependencies:
+    "@fingerprintjs/fingerprintjs" "^3.3.3"
+    "@headlessui/react" "^1.6.6"
+    "@heroicons/react" "^2.0.11"
+    dayjs "^1.11.5"
+    dayjs-business-days2 "^1.1.1"
+    instead "^1.0.3"
+    react-calendly "^4.0.1"
+    tailwind-merge "^1.6.0"
+
 color-convert@^1.9.0:
   version "1.9.3"
   resolved "https://registry.npmjs.org/color-convert/-/color-convert-1.9.3.tgz"
@@ -989,6 +1008,18 @@ csstype@^3.0.2:
   version "3.1.0"
   resolved "https://registry.npmjs.org/csstype/-/csstype-3.1.0.tgz"
   integrity sha512-uX1KG+x9h5hIJsaKR9xHUeUraxf8IODOwq9JLNPq6BwB04a/xgpq3rcx47l5BZu5zBPlgD342tdke3Hom/nJRA==
+
+dayjs-business-days2@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/dayjs-business-days2/-/dayjs-business-days2-1.1.1.tgz#53d443c1314f13c963c5abcb70c8a6103246435d"
+  integrity sha512-8n7RUOOc6dcP8nVyJTpM+TD69RcOOwuL6sQq2u7y0LsD0BsB+oK0R5YOl5885A4fz6cQwwFZvNUGjCopj9H3GQ==
+  dependencies:
+    dayjs "^1"
+
+dayjs@^1, dayjs@^1.11.5:
+  version "1.11.5"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.5.tgz#00e8cc627f231f9499c19b38af49f56dc0ac5e93"
+  integrity sha512-CAdX5Q3YW3Gclyo5Vpqkgpj8fSdLQcRuzfX6mC6Phy0nfJ0eGYOeS7m4mt2plDWLAtA4TqTakvbboHvUxfe4iA==
 
 detect-libc@^1.0.3:
   version "1.0.3"
@@ -1115,6 +1146,11 @@ import-fresh@^3.2.1:
   dependencies:
     parent-module "^1.0.0"
     resolve-from "^4.0.0"
+
+instead@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/instead/-/instead-1.0.3.tgz#e27bcc9b977e9c3fbf6880d28451ac1afe7542b2"
+  integrity sha512-7EUe8+ZmvERjdLwrEc1/CdErN8n8XYdF/uI+n8aLbs6Uf/wyqUXyFrCQ8HYADBFaz4+IqGiPVSTInpkMwqrXuw==
 
 is-arrayish@^0.2.1:
   version "0.2.1"
@@ -1354,6 +1390,11 @@ react-app-polyfill@^1.0.0:
     regenerator-runtime "^0.13.3"
     whatwg-fetch "^3.0.0"
 
+react-calendly@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/react-calendly/-/react-calendly-4.0.1.tgz#2cdbc0a997d7f066c60c23e4d90c1c9a237b1ec4"
+  integrity sha512-y4IXQ/ghFSPJHlFS2XUb7tUEfLkJAF6SGDDq9EP1pzA1iKW57qwpQO/7pVwshJPPWVkEPYqLN2IkeNzShi2oKQ==
+
 react-error-overlay@6.0.9:
   version "6.0.9"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.9.tgz#3c743010c9359608c375ecd6bc76f35d93995b0a"
@@ -1429,6 +1470,11 @@ svgo@^2.4.0:
     picocolors "^1.0.0"
     stable "^0.1.8"
 
+tailwind-merge@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/tailwind-merge/-/tailwind-merge-1.6.0.tgz#dd652005544aa0b04628e69688b7108265f0d441"
+  integrity sha512-lfpys05uZMcVGIbgrrM/HlQGYKiPIcUhs76H1VrXo0gerpYkoLk4zjQTppdyAcBcmpzlzXJw7X0JniUKOr2hkg==
+
 term-size@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/term-size/-/term-size-2.2.1.tgz#2a6a54840432c2fb6320fea0f415531e90189f54"
@@ -1449,7 +1495,7 @@ timsort@^0.3.0:
   resolved "https://registry.npmjs.org/timsort/-/timsort-0.3.0.tgz"
   integrity sha512-qsdtZH+vMoCARQtyod4imc2nIJwg9Cc7lPRrw9CzF8ZKR0khdr8+2nX80PBhET3tcyTtJDxAffGh2rXH4tyU8A==
 
-tslib@^2.4.0:
+tslib@^2.0.1, tslib@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
   integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
