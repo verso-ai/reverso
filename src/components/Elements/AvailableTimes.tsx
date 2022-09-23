@@ -39,6 +39,7 @@ const AvailableTimes: FC<AvailableTimesProps> = ({
   const rescheduleUid = 12345;
 
   const [brand, setBrand] = useState('#292929');
+  const [selectedSlot, setSelectedSlot] = useState<any>();
 
   useEffect(() => {
     setBrand(
@@ -81,7 +82,7 @@ const AvailableTimes: FC<AvailableTimesProps> = ({
             };
 
             if (rescheduleUid) {
-              bookingUrl.query.rescheduleUid = rescheduleUid as unknown as string;
+              bookingUrl.query.rescheduleUid = (rescheduleUid as unknown) as string;
             }
 
             // If event already has an attendee add booking id
@@ -105,16 +106,19 @@ const AvailableTimes: FC<AvailableTimesProps> = ({
                       .tz(timeZone())
                       .format(timeFormat)}
                     {!!seatsPerTimeSlot && (
-                      <p className="text-sm">{"Fully Booked"}</p>
+                      <p className="text-sm">{'Fully Booked'}</p>
                     )}
                   </div>
                 ) : (
-                  <a
-                    href={'bookingUrl'}
+                  <div
+                    onClick={() => setSelectedSlot(dayjs(slot.time).format())}
                     className={twMerge(
                       'text-primary-500 hover:border-gray-900 hover:bg-gray-50',
-                      'dark:bg-darkgray-200 dark:hover:bg-darkgray-300 dark:hover:border-darkmodebrand mb-2 block rounded-md border bg-white py-2 text-sm font-medium dark:border-transparent dark:text-neutral-200',
-                      brand === '#fff' || brand === '#ffffff' ? '' : ''
+                      'dark:bg-darkgray-200 dark:hover:bg-darkgray-300 dark:hover:border-blue mb-2 block rounded-md border bg-white py-2 text-sm font-medium dark:border-transparent dark:text-neutral-200',
+                      brand === '#fff' || brand === '#ffffff' ? '' : '',
+                      selectedSlot === dayjs(slot.time).format()
+                        ? 'bg-green text-white'
+                        : ''
                     )}
                     data-testid="time"
                   >
@@ -136,10 +140,10 @@ const AvailableTimes: FC<AvailableTimesProps> = ({
                         {slot.attendees
                           ? seatsPerTimeSlot - slot.attendees
                           : seatsPerTimeSlot}{' '}
-                        / {seatsPerTimeSlot} {"puestos disponibles"}
+                        / {seatsPerTimeSlot} {'puestos disponibles'}
                       </p>
                     )}
-                  </a>
+                  </div>
                 )}
               </div>
             );
@@ -148,7 +152,7 @@ const AvailableTimes: FC<AvailableTimesProps> = ({
         {!isLoading && !slots.length && (
           <div className="-mt-4 flex h-full w-full flex-col content-center items-center justify-center">
             <h1 className="my-6 text-xl text-black dark:text-white">
-              {"No hay horarios disponibles"}
+              {'No hay horarios disponibles'}
             </h1>
           </div>
         )}

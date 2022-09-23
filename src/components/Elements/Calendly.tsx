@@ -15,6 +15,7 @@ interface Props {
   placeholder?: string;
   classNames: ClassNames;
   required: boolean;
+  timeSlots: any;
 }
 
 export type EventType = {
@@ -71,636 +72,19 @@ export function classNames(...classes: unknown[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-const useSlots = ({}: {
+const useSlots = ({timeSlots}: {
   eventTypeId: number;
   eventTypeSlug: string;
   startTime?: Dayjs;
   endTime?: Dayjs;
   timeZone?: string;
+  timeSlots: any;
 }) => {
-  const { data, isLoading, isIdle } = {
-    data: {
-      slots: {
-        '2022-09-01': [],
-        '2022-09-02': [],
-        '2022-09-03': [],
-        '2022-09-04': [],
-        '2022-09-05': [],
-        '2022-09-06': [],
-        '2022-09-07': [],
-        '2022-09-08': [],
-        '2022-09-09': [],
-        '2022-09-10': [],
-        '2022-09-11': [],
-        '2022-09-12': [],
-        '2022-09-13': [],
-        '2022-09-14': [],
-        '2022-09-15': [],
-        '2022-09-16': [],
-        '2022-09-17': [],
-        '2022-09-18': [],
-        '2022-09-19': [],
-        '2022-09-20': [
-          {
-            time: '2022-09-20T08:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-20T08:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-20T09:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-20T09:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-20T10:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-20T10:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-20T11:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-20T11:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-20T12:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-20T12:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-20T13:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-20T13:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-20T14:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-20T14:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-20T15:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-20T15:30:00.000Z',
-            users: ['test'],
-          },
-        ],
-        '2022-09-21': [
-          {
-            time: '2022-09-21T08:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-21T08:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-21T09:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-21T09:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-21T10:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-21T10:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-21T11:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-21T11:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-21T12:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-21T12:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-21T13:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-21T13:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-21T14:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-21T14:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-21T15:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-21T15:30:00.000Z',
-            users: ['test'],
-          },
-        ],
-        '2022-09-22': [
-          {
-            time: '2022-09-22T08:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-22T08:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-22T09:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-22T09:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-22T10:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-22T10:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-22T11:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-22T11:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-22T12:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-22T12:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-22T13:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-22T13:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-22T14:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-22T14:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-22T15:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-22T15:30:00.000Z',
-            users: ['test'],
-          },
-        ],
-        '2022-09-23': [
-          {
-            time: '2022-09-23T08:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-23T08:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-23T09:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-23T09:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-23T10:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-23T10:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-23T11:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-23T11:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-23T12:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-23T12:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-23T13:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-23T13:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-23T14:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-23T14:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-23T15:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-23T15:30:00.000Z',
-            users: ['test'],
-          },
-        ],
-        '2022-09-24': [],
-        '2022-09-25': [],
-        '2022-09-26': [
-          {
-            time: '2022-09-26T08:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-26T08:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-26T09:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-26T09:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-26T10:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-26T10:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-26T11:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-26T11:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-26T12:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-26T12:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-26T13:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-26T13:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-26T14:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-26T14:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-26T15:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-26T15:30:00.000Z',
-            users: ['test'],
-          },
-        ],
-        '2022-09-27': [
-          {
-            time: '2022-09-27T08:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-27T08:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-27T09:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-27T09:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-27T10:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-27T10:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-27T11:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-27T11:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-27T12:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-27T12:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-27T13:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-27T13:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-27T14:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-27T14:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-27T15:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-27T15:30:00.000Z',
-            users: ['test'],
-          },
-        ],
-        '2022-09-28': [
-          {
-            time: '2022-09-28T08:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-28T08:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-28T09:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-28T09:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-28T10:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-28T10:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-28T11:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-28T11:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-28T12:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-28T12:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-28T13:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-28T13:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-28T14:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-28T14:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-28T15:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-28T15:30:00.000Z',
-            users: ['test'],
-          },
-        ],
-        '2022-09-29': [
-          {
-            time: '2022-09-29T08:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-29T08:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-29T09:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-29T09:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-29T10:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-29T10:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-29T11:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-29T11:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-29T12:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-29T12:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-29T13:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-29T13:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-29T14:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-29T14:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-29T15:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-29T15:30:00.000Z',
-            users: ['test'],
-          },
-        ],
-        '2022-09-30': [
-          {
-            time: '2022-09-30T08:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-30T08:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-30T09:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-30T09:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-30T10:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-30T10:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-30T11:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-30T11:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-30T12:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-30T12:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-30T13:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-30T13:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-30T14:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-30T14:30:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-30T15:00:00.000Z',
-            users: ['test'],
-          },
-          {
-            time: '2022-09-30T15:30:00.000Z',
-            users: ['test'],
-          },
-        ],
-      },
-    },
+  const { isLoading, isIdle } = {
     isLoading: false,
     isIdle: false,
   };
+  const data = {...timeSlots};
   const [cachedSlots, setCachedSlots] = useState<any>({});
 
   useEffect(() => {
@@ -717,6 +101,7 @@ const SlotPicker = ({
   eventType,
   // timeFormat,
   timeZone,
+  timeSlots,
   // recurringEventCount,
   // seatsPerTimeSlot,
   weekStart = 0,
@@ -724,6 +109,7 @@ const SlotPicker = ({
 {
   eventType: Pick<EventType, 'id' | 'schedulingType' | 'slug'>;
   timeFormat: string;
+  timeSlots: any;
   timeZone?: string;
   seatsPerTimeSlot?: number;
   recurringEventCount?: number;
@@ -774,6 +160,7 @@ const SlotPicker = ({
     startTime: selectedDate?.startOf('day'),
     endTime: selectedDate?.endOf('day'),
     timeZone,
+    timeSlots
   });
   const { slots: _2, isLoading } = useSlots({
     eventTypeId: eventType.id,
@@ -781,6 +168,7 @@ const SlotPicker = ({
     startTime: browsingDate?.startOf('month'),
     endTime: browsingDate?.endOf('month'),
     timeZone,
+    timeSlots
   });
 
   const slots = useMemo(() => ({ ..._2, ..._1 }), [_1, _2]);
@@ -826,6 +214,7 @@ export const Calendly: FC<Props> = ({
   name,
   label,
   //   Icon,
+  timeSlots,
   classNames,
   //   placeholder,
   //   required,
@@ -853,6 +242,7 @@ export const Calendly: FC<Props> = ({
 
       <SlotPicker
         weekStart={1}
+        timeSlots={timeSlots}
         eventType={{
           // title: '30 Min Meeting',
           slug: '30min',

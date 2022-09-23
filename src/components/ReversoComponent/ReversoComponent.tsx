@@ -3,6 +3,7 @@ import { getOptionsSchema } from '../../lib/elements';
 import { ClassNames } from '../../types';
 import { Checkbox } from '../Elements/Checkbox';
 import { Email } from '../Elements/Email';
+import { Calendly } from '../Elements/Calendly';
 import { Payment } from '../Elements/Payment';
 import { Number } from '../Elements/Number';
 import { LinkButton } from '../Elements/LinkButton';
@@ -20,7 +21,7 @@ interface Option {
   value: string;
 }
 
-export interface ReversoElementProps {
+export interface ReversoComponentProps {
   type: string;
   name: string;
   label?: string;
@@ -30,9 +31,10 @@ export interface ReversoElementProps {
   required?: boolean;
   options?: Option[] | string[];
   rows?: number;
+  timeSlots?: any | {};
 }
 
-export const ReversoElement: FC<ReversoElementProps> = ({
+export const ReversoComponent: FC<ReversoComponentProps> = ({
   type,
   name,
   label = undefined,
@@ -42,6 +44,7 @@ export const ReversoElement: FC<ReversoElementProps> = ({
   required = false,
   options,
   rows,
+  timeSlots,
 }) => {
   const { schema, setSchema } = useContext(SchemaContext);
   const pageName = useContext(PageContext);
@@ -101,7 +104,17 @@ export const ReversoElement: FC<ReversoElementProps> = ({
               classNames={classNames}
               required={required}
             />
-          )  : type === 'payment' ? (
+          ) : type === 'calendly' ? (
+            <Calendly
+              name={name}
+              label={label}
+              Icon={icon}
+              placeholder={placeholder}
+              classNames={classNames}
+              required={required}
+              timeSlots={timeSlots}
+            />
+          ) : type === 'payment' ? (
             <Payment
               name={name}
               label={label}
