@@ -43,13 +43,14 @@ export const Day = ({
   //   const disabledDateButtonEmbedStyles = useEmbedStyles("disabledDateButton");
   return (
     <button
+      type="button"
       //   style={props.disabled ? { ...disabledDateButtonEmbedStyles } : { ...enabledDateButtonEmbedStyles }}
       className={twMerge(
         'disabled:text-bookinglighter dark:hover:border-blue-200 absolute top-0 left-0 right-0 bottom-0 mx-auto w-full rounded-md border-2 border-transparent text-center font-medium disabled:cursor-default disabled:border-transparent disabled:font-light disabled:dark:border-transparent',
         active
           ? 'dark:bg-blue dark:text-white bg-brand text-brandcontrast border-2'
           : !props.disabled
-          ? 'dark:bg-darkgray-200 bg-gray-100 hover:bg-gray-300 dark:text-white'
+          ? 'dark:bg-darkgray-200 bg-gray-100 hover:bg-gray-300 dark:text-gray-200'
           : ''
       )}
       data-testid="day"
@@ -104,13 +105,12 @@ const Days = ({
           {day === null ? (
             <div key={`e-${idx}`} />
           ) : props.isLoading ? (
-            <button
+            <div
               className=" dark:bg-darkgray-200 absolute top-0 left-0 right-0 bottom-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent bg-gray-50 text-center text-gray-400 opacity-50 dark:text-gray-400"
               key={`e-${idx}`}
-              disabled
             >
               <SkeletonText className="h-4 w-5" />
-            </button>
+            </div>
           ) : (
             <DayComponent
               date={day}
@@ -154,10 +154,10 @@ const DatePicker = ({
   return (
     <div className={className}>
       <div className="mb-4 flex justify-between text-xl font-light">
-        <span className="w-1/2 dark:text-white">
+        <span className="w-1/2 dark:text-grey">
           {browsingDate ? (
             <>
-              <strong className="text-bookingdarker text-base font-semibold dark:text-white">
+              <strong className="text-bookingdarker text-base font-semibold dark:text-grey">
                 {browsingDate.format('MMMM')}
               </strong>{' '}
               <span className="text-bookinglight text-sm font-medium">
@@ -168,28 +168,27 @@ const DatePicker = ({
             <SkeletonText className="h-8 w-24" />
           )}
         </span>
-        <div className="text-black dark:text-white">
-          <button
-            onClick={() => changeMonth(-1)}
+        <div className="text-black flex flex-row">
+          <div
+            onClick={() => !browsingDate.isAfter(dayjs()) && changeMonth(-1)}
             className={twMerge(
-              'group p-1 opacity-50 hover:opacity-100 ltr:mr-2 rtl:ml-2',
+              'group p-1 opacity-50 hover:opacity-100 ltr:mr-2 rtl:ml-2 cursor-pointer',
               !browsingDate.isAfter(dayjs()) &&
-                'disabled:text-bookinglighter hover:opacity-50'
+                'disabled:text-blue hover:opacity-50'
             )}
-            disabled={!browsingDate.isAfter(dayjs())}
             data-testid="decrementMonth"
           >
             {/* <ChevronLeftIcon className="h-5 w-5" /> */}
-            "Prev"
-          </button>
-          <button
-            className="group p-1 opacity-50 hover:opacity-100"
+            {'<'}
+          </div>
+          <div
+            className="group p-1 opacity-50 hover:opacity-100 cursor-pointer"
             onClick={() => changeMonth(+1)}
             data-testid="incrementMonth"
           >
             {/* <ChevronRightIcon className="h-5 w-5" /> */}
-            "next"
-          </button>
+            {'>'}
+          </div>
         </div>
       </div>
       <div className="border-bookinglightest mb-2 grid grid-cols-7 gap-4 border-t border-b text-center dark:border-gray-800 md:mb-0 md:border-0">

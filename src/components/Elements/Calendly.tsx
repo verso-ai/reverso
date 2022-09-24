@@ -72,7 +72,9 @@ export function classNames(...classes: unknown[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-const useSlots = ({timeSlots}: {
+const useSlots = ({
+  timeSlots,
+}: {
   eventTypeId: number;
   eventTypeSlug: string;
   startTime?: Dayjs;
@@ -84,7 +86,7 @@ const useSlots = ({timeSlots}: {
     isLoading: false,
     isIdle: false,
   };
-  const data = {...timeSlots};
+  const data = { ...timeSlots };
   const [cachedSlots, setCachedSlots] = useState<any>({});
 
   useEffect(() => {
@@ -105,6 +107,7 @@ const SlotPicker = ({
   // recurringEventCount,
   // seatsPerTimeSlot,
   weekStart = 0,
+  setSelectedDateTime,
 }: // ethSignature,
 {
   eventType: Pick<EventType, 'id' | 'schedulingType' | 'slug'>;
@@ -115,6 +118,7 @@ const SlotPicker = ({
   recurringEventCount?: number;
   weekStart?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   ethSignature?: string;
+  setSelectedDateTime: any;
 }) => {
   const [selectedDate, setSelectedDate] = useState<Dayjs>();
   const [browsingDate, setBrowsingDate] = useState<Dayjs>();
@@ -122,6 +126,10 @@ const SlotPicker = ({
   // const { month, setQuery: setMonth } = useRouterQuery('month');
   const [date, setDate] = useState('2022-09-27');
   const [month, setMonth] = useState('2022-09');
+
+  useEffect(() => {
+    setSelectedDateTime(selectedDate);
+  }, [selectedDate]);
 
   useEffect(() => {
     // Etc/GMT is not actually a timeZone, so handle this select option explicitly to prevent a hard crash.
@@ -160,7 +168,7 @@ const SlotPicker = ({
     startTime: selectedDate?.startOf('day'),
     endTime: selectedDate?.endOf('day'),
     timeZone,
-    timeSlots
+    timeSlots,
   });
   const { slots: _2, isLoading } = useSlots({
     eventTypeId: eventType.id,
@@ -168,7 +176,7 @@ const SlotPicker = ({
     startTime: browsingDate?.startOf('month'),
     endTime: browsingDate?.endOf('month'),
     timeZone,
-    timeSlots
+    timeSlots,
   });
 
   const slots = useMemo(() => ({ ..._2, ..._1 }), [_1, _2]);
@@ -227,6 +235,8 @@ export const Calendly: FC<Props> = ({
     setSubmissionValue(checked, pageName, name, setSubmission);
   }, [checked]);
 
+  const [selectedDateTime, setSelectedDateTime] = useState<any>();
+
   return (
     <div className="flex">
       {label && (
@@ -271,6 +281,22 @@ export const Calendly: FC<Props> = ({
         }}
         timeFormat={'HH:mm'}
         timeZone={'America/New_York'}
+        setSelectedDateTime={setSelectedDateTime}
+      />
+      <input
+        type="text"
+        className="h-1 w-1 border-none"
+        onInvalid={(e: any) =>
+          e.target.setCustomValidity('please select a booking date')
+        }
+        onInput={(e: any) => e.target.setCustomValidity('')}
+        id={`input-${name}`}
+        placeholder={''}
+        onChange={e =>
+          setSubmissionValue(e.target.value, pageName, "name-medo", setSubmission)
+        }
+        value={selectedDateTime}
+        required={true}
       />
     </div>
   );
